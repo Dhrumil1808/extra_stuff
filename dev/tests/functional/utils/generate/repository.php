@@ -1,5 +1,6 @@
 <?php
 /**
+<<<<<<< HEAD
  * Magento
  *
  * NOTICE OF LICENSE
@@ -27,3 +28,12 @@ require_once dirname(__DIR__) . '/' . 'bootstrap.php';
 
 $objectManager->create('Magento\Mtf\Util\Generate\Repository')->launch();
 \Magento\Mtf\Util\Generate\GenerateResult::displayResults();
+=======
+ * Copyright © 2016 Magento. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+require_once dirname(__DIR__) . '/' . 'bootstrap.php';
+
+$magentoObjectManager->get('Magento\Framework\App\State')->setAreaCode('frontend');
+$objectManager->create('Magento\Mtf\Util\Generate\Repository')->launch();
+>>>>>>> 86b9222525c862e3ab299f3f137030666df5eb32

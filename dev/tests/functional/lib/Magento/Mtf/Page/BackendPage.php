@@ -1,5 +1,6 @@
 <?php
 /**
+<<<<<<< HEAD
  * Magento
  *
  * NOTICE OF LICENSE
@@ -36,10 +37,24 @@ use Magento\Mtf\Config\Data;
 
 /**
  * Class for backend pages.
+=======
+ * Copyright © 2016 Magento. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+namespace Magento\Mtf\Page;
+
+use Magento\Mtf\Factory\Factory;
+
+/**
+ * Admin backend page.
+ *
+ * @SuppressWarnings(PHPMD.NumberOfChildren)
+>>>>>>> 86b9222525c862e3ab299f3f137030666df5eb32
  */
 class BackendPage extends Page
 {
     /**
+<<<<<<< HEAD
      * Admin auth login page.
      *
      * @var AdminAuthLogin
@@ -61,6 +76,15 @@ class BackendPage extends Page
     protected function _init()
     {
         $this->_url = $_ENV['app_backend_url'] . static::MCA;
+=======
+     * Init page. Set page url
+     *
+     * @return void
+     */
+    protected function initUrl()
+    {
+        $this->url = $_ENV['app_backend_url'] . static::MCA;
+>>>>>>> 86b9222525c862e3ab299f3f137030666df5eb32
     }
 
     /**
@@ -71,6 +95,7 @@ class BackendPage extends Page
      */
     public function open(array $params = [])
     {
+<<<<<<< HEAD
         $systemConfig = ObjectManager::getInstance()->create('Magento\Mtf\Config\DataInterface');
         $admin = [
             'username' => [
@@ -103,4 +128,9 @@ class BackendPage extends Page
             $loginBlock->loginToAdminPanel($admin);
         }
     }
+=======
+        Factory::getApp()->magentoBackendLoginUser();
+        return parent::open($params);
+    }
+>>>>>>> 86b9222525c862e3ab299f3f137030666df5eb32
 }

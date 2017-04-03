@@ -1,3 +1,8 @@
+<<<<<<< HEAD
+=======
+; Copyright © 2016 Magento. All rights reserved.
+; See COPYING.txt for license details.
+>>>>>>> 86b9222525c862e3ab299f3f137030666df5eb32
 ; This file is for CGI/FastCGI installations.
 ; Try copying it to php5.ini, if it doesn't work
 
@@ -7,10 +12,13 @@ memory_limit = 64M
 
 max_execution_time = 18000
 
+<<<<<<< HEAD
 ; disable magic quotes for php request vars
 
 magic_quotes_gpc = off
 
+=======
+>>>>>>> 86b9222525c862e3ab299f3f137030666df5eb32
 ; disable automatic session start
 ; before autoload was initialized
 
@@ -24,11 +32,15 @@ zlib.output_compression = on
 
 suhosin.session.cryptua = off
 
+<<<<<<< HEAD
 ; turn off compatibility with PHP4 when dealing with objects
     
 zend.ze1_compatibility_mode = off
 
 ; PHP for some reason ignores this setting in system php.ini 
+=======
+; PHP for some reason ignores this setting in system php.ini
+>>>>>>> 86b9222525c862e3ab299f3f137030666df5eb32
 ; and disables mcrypt if this line is missing in local php.ini
 
 extension=mcrypt.so

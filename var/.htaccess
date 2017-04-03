@@ -1,2 +1,6 @@
 Order deny,allow
+<<<<<<< HEAD
 Deny from all
+=======
+Deny from all
+>>>>>>> 86b9222525c862e3ab299f3f137030666df5eb32

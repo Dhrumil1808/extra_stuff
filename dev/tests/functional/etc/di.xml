@@ -1,6 +1,7 @@
 <?xml version="1.0"?>
 <!--
 /**
+<<<<<<< HEAD
  * Magento
  *
  * NOTICE OF LICENSE
@@ -28,9 +29,21 @@
 <config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../vendor/magento/mtf/Magento/Mtf/ObjectManager/etc/config.xsd">
     <preference for="Magento\Mtf\Util\Generate\Fixture\FieldsProviderInterface" type="Magento\Mtf\Util\Generate\Fixture\FieldsProvider"/>
     <preference for="Magento\Mtf\Util\Generate\Repository\CollectionProviderInterface" type="Magento\Mtf\Util\Generate\Repository\CollectionProvider" />
+=======
+ * Copyright © 2016 Magento. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+>>>>>>> 86b9222525c862e3ab299f3f137030666df5eb32
     <virtualType name="Magento\Mtf\Config\SchemaLocator\Config" type="Magento\Mtf\Config\SchemaLocator">
         <arguments>
             <argument name="schemaPath" xsi:type="string">etc/config.xsd</argument>
         </arguments>
     </virtualType>
+<<<<<<< HEAD
+=======
+
+    <type name="Magento\Mtf\Util\Protocol\CurlTransport\WebapiDecorator" shared="true" />
+>>>>>>> 86b9222525c862e3ab299f3f137030666df5eb32
 </config>

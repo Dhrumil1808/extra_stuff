@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <?xml version="1.0"?>
 <!--
 /**
@@ -23,6 +24,13 @@
  * @package     Tests_Functional
  * @copyright  Copyright (c) 2006-2016 X.commerce, Inc. and affiliates (http://www.magento.com)
  * @license    http://opensource.org/licenses/osl-3.0.php  Open Software License (OSL 3.0)
+=======
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+/**
+ * Copyright © 2016 Magento. All rights reserved.
+ * See COPYING.txt for license details.
+>>>>>>> 86b9222525c862e3ab299f3f137030666df5eb32
  */
 -->
 <phpunit xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
@@ -42,6 +50,7 @@
         <listener class="Magento\Mtf\System\Browser\Listener" />
         <listener class="Magento\Mtf\System\Isolation\Listener">
             <arguments>
+<<<<<<< HEAD
                 <object class="Magento\Mtf\System\Isolation\Driver\Base"/>
             </arguments>
         </listener>
@@ -52,14 +61,32 @@
     <php>
         <env name="app_frontend_url" value="http://localhost/index.php/" />
         <env name="app_backend_url" value="http://localhost/index.php/backend/" />
+=======
+                <object class="Magento\Mtf\System\Isolation\Driver\Base" />
+            </arguments>
+        </listener>
+        <listener class="Magento\Mtf\System\Event\StateListener" />
+    </listeners>
+
+    <php>
+        <env name="app_frontend_url" value="http://localhost/" />
+        <env name="app_backend_url" value="http://localhost/backend/" />
+>>>>>>> 86b9222525c862e3ab299f3f137030666df5eb32
         <env name="testsuite_rule" value="basic" />
         <env name="testsuite_rule_path" value="Magento/Mtf/TestSuite/InjectableTests" />
         <env name="log_directory" value="var/log" />
         <env name="events_preset" value="base" />
+<<<<<<< HEAD
         <env name="report_file_name" value="test-cases-report.xml"/>
         <env name="basedir" value="var/log" />
         <env name="product_root_dir" value="var/log" />
         <env name="credentials_file_path" value="./credentials.xml.dist" />
+=======
+        <env name="module_whitelist" value="Magento_Install,Magento_Upgrade" />
+        <env name="basedir" value="var/log" />
+        <env name="credentials_file_path" value="./credentials.xml.dist" />
+        <env name="mage_mode" value="developer" />
+>>>>>>> 86b9222525c862e3ab299f3f137030666df5eb32
     </php>
 
 </phpunit>

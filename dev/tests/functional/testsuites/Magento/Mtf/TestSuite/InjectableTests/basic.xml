@@ -1,6 +1,7 @@
 <?xml version="1.0"?>
 <!--
 /**
+<<<<<<< HEAD
  * Magento
  *
  * NOTICE OF LICENSE
@@ -29,11 +30,26 @@
     <rule scope="testcase">
         <deny>
             <tag group="test_type" value="3rd_party_test" />
+=======
+ * Copyright © 2016 Magento. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="../../../../../vendor/magento/mtf/Magento/Mtf/TestRunner/etc/testRunner.xsd">
+    <rule scope="testcase">
+        <deny>
+            <tag group="test_type" value="3rd_party_test_deprecated" />
+>>>>>>> 86b9222525c862e3ab299f3f137030666df5eb32
         </deny>
     </rule>
     <rule scope="variation">
         <deny>
+<<<<<<< HEAD
             <tag group="test_type" value="install" />
+=======
+            <tag group="test_type" value="3rd_party_test" />
+>>>>>>> 86b9222525c862e3ab299f3f137030666df5eb32
         </deny>
     </rule>
 </config>

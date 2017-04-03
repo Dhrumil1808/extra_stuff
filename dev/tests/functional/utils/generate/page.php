@@ -1,5 +1,6 @@
 <?php
 /**
+<<<<<<< HEAD
  * Magento
  *
  * NOTICE OF LICENSE
@@ -24,5 +25,12 @@
  * @license    http://opensource.org/licenses/osl-3.0.php  Open Software License (OSL 3.0)
  */
 require_once dirname(__DIR__) . '/' . 'bootstrap.php';
+=======
+ * Copyright © 2016 Magento. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+require_once dirname(__DIR__) . '/' . 'bootstrap.php';
+
+>>>>>>> 86b9222525c862e3ab299f3f137030666df5eb32
 $objectManager->create('Magento\Mtf\Util\Generate\Page')->launch();
 \Magento\Mtf\Util\Generate\GenerateResult::displayResults();

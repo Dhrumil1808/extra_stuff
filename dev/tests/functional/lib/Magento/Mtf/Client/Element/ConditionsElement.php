@@ -1,5 +1,6 @@
 <?php
 /**
+<<<<<<< HEAD
  * Magento
  *
  * NOTICE OF LICENSE
@@ -22,6 +23,10 @@
  * @package     Tests_Functional
  * @copyright  Copyright (c) 2006-2016 X.commerce, Inc. and affiliates (http://www.magento.com)
  * @license    http://opensource.org/licenses/osl-3.0.php  Open Software License (OSL 3.0)
+=======
+ * Copyright © 2016 Magento. All rights reserved.
+ * See COPYING.txt for license details.
+>>>>>>> 86b9222525c862e3ab299f3f137030666df5eb32
  */
 
 namespace Magento\Mtf\Client\Element;
@@ -29,7 +34,10 @@ namespace Magento\Mtf\Client\Element;
 use Magento\Mtf\ObjectManager;
 use Magento\Mtf\Client\Locator;
 use Magento\Mtf\Client\ElementInterface;
+<<<<<<< HEAD
 use Mage\Adminhtml\Test\Block\Template;
+=======
+>>>>>>> 86b9222525c862e3ab299f3f137030666df5eb32
 
 /**
  * Typified element class for conditions.
@@ -64,6 +72,7 @@ class ConditionsElement extends SimpleElement
     const TRY_COUNT = 3;
 
     /**
+<<<<<<< HEAD
      * Latest occurred exception.
      *
      * @var \Exception
@@ -71,6 +80,8 @@ class ConditionsElement extends SimpleElement
     protected $exception;
 
     /**
+=======
+>>>>>>> 86b9222525c862e3ab299f3f137030666df5eb32
      * Main condition.
      *
      * @var string
@@ -89,7 +100,11 @@ class ConditionsElement extends SimpleElement
      *
      * @var string
      */
+<<<<<<< HEAD
     protected $addNew = './/a/img[contains(@class,"rule-param-add")]';
+=======
+    protected $addNew = './/*[contains(@class,"rule-param-new-child")]/a';
+>>>>>>> 86b9222525c862e3ab299f3f137030666df5eb32
 
     /**
      * Button remove condition.
@@ -103,7 +118,11 @@ class ConditionsElement extends SimpleElement
      *
      * @var string
      */
+<<<<<<< HEAD
     protected $newCondition = './ul/li/span[contains(@class,"rule-param-new-child")]';
+=======
+    protected $newCondition = './ul/li/span[contains(@class,"rule-param-new-child")]/..';
+>>>>>>> 86b9222525c862e3ab299f3f137030666df5eb32
 
     /**
      * Type of new condition.
@@ -134,6 +153,37 @@ class ConditionsElement extends SimpleElement
     protected $param = './span[span[*[substring(@id,(string-length(@id)-%d+1))="%s"]]]';
 
     /**
+<<<<<<< HEAD
+=======
+     * Rule param wait locator.
+     *
+     * @var string
+     */
+    protected $ruleParamWait = './/*[@class="rule-param-wait"]';
+
+    /**
+     * Rule param input selector.
+     *
+     * @var string
+     */
+    protected $ruleParamInput = '[name^="rule"]';
+
+    /**
+     * Apply rule param link.
+     *
+     * @var string
+     */
+    protected $applyRuleParam = './/*[@class="rule-param-apply"]';
+
+    /**
+     * Chooser grid locator.
+     *
+     * @var string
+     */
+    protected $chooserGridLocator = 'div[id*=chooser]';
+
+    /**
+>>>>>>> 86b9222525c862e3ab299f3f137030666df5eb32
      * Key of last find param.
      *
      * @var int
@@ -180,6 +230,7 @@ class ConditionsElement extends SimpleElement
     ];
 
     /**
+<<<<<<< HEAD
      * Rule param wait locator.
      *
      * @var string
@@ -206,6 +257,13 @@ class ConditionsElement extends SimpleElement
      * @var string
      */
     protected $templateBlock = './ancestor::body';
+=======
+     * Latest occurred exception.
+     *
+     * @var \Exception
+     */
+    protected $exception;
+>>>>>>> 86b9222525c862e3ab299f3f137030666df5eb32
 
     /**
      * Set value to conditions.
@@ -215,6 +273,11 @@ class ConditionsElement extends SimpleElement
      */
     public function setValue($value)
     {
+<<<<<<< HEAD
+=======
+        $this->eventManager->dispatchEvent(['set_value'], [__METHOD__, $this->getAbsoluteSelector()]);
+
+>>>>>>> 86b9222525c862e3ab299f3f137030666df5eb32
         $conditions = $this->decodeValue($value);
         $context = $this->find($this->mainCondition, Locator::SELECTOR_XPATH);
         $this->clear();
@@ -222,7 +285,11 @@ class ConditionsElement extends SimpleElement
     }
 
     /**
+<<<<<<< HEAD
      * Add condition combination.
+=======
+     * Add conditions combination.
+>>>>>>> 86b9222525c862e3ab299f3f137030666df5eb32
      *
      * @param string $condition
      * @param ElementInterface $context
@@ -233,6 +300,10 @@ class ConditionsElement extends SimpleElement
         $condition = $this->parseCondition($condition);
         $this->addCondition($condition['type'], $context);
         $createdCondition = $context->find($this->created, Locator::SELECTOR_XPATH);
+<<<<<<< HEAD
+=======
+        $this->waitForCondition($createdCondition);
+>>>>>>> 86b9222525c862e3ab299f3f137030666df5eb32
         if (!empty($condition['rules'])) {
             $this->fillCondition($condition['rules'], $createdCondition);
         }
@@ -240,6 +311,7 @@ class ConditionsElement extends SimpleElement
     }
 
     /**
+<<<<<<< HEAD
      * Add condition.
      *
      * @param string $type
@@ -275,6 +347,8 @@ class ConditionsElement extends SimpleElement
     }
 
     /**
+=======
+>>>>>>> 86b9222525c862e3ab299f3f137030666df5eb32
      * Add conditions.
      *
      * @param array $conditions
@@ -305,16 +379,62 @@ class ConditionsElement extends SimpleElement
         $condition = $this->parseCondition($condition);
         $this->addCondition($condition['type'], $context);
         $createdCondition = $context->find($this->created, Locator::SELECTOR_XPATH);
+<<<<<<< HEAD
+=======
+        $this->waitForCondition($createdCondition);
+>>>>>>> 86b9222525c862e3ab299f3f137030666df5eb32
         $this->fillCondition($condition['rules'], $createdCondition);
     }
 
     /**
+<<<<<<< HEAD
+=======
+     * Click to add condition button and set type.
+     *
+     * @param string $type
+     * @param ElementInterface $context
+     * @return void
+     * @throws \Exception
+     */
+    protected function addCondition($type, ElementInterface $context)
+    {
+        $newCondition = $context->find($this->newCondition, Locator::SELECTOR_XPATH);
+        $count = 0;
+
+        do {
+            $newCondition->find($this->addNew, Locator::SELECTOR_XPATH)->click();
+
+            try {
+                $newCondition->find($this->typeNew, Locator::SELECTOR_XPATH, 'select')->setValue($type);
+                $isSetType = true;
+            } catch (\PHPUnit_Extensions_Selenium2TestCase_WebDriverException $e) {
+                $isSetType = false;
+                $this->exception = $e;
+                $this->eventManager->dispatchEvent(['exception'], [__METHOD__, $this->getAbsoluteSelector()]);
+            }
+            $count++;
+        } while (!$isSetType && $count < self::TRY_COUNT);
+
+        if (!$isSetType) {
+            $exception = $this->exception ? $this->exception : (new \Exception("Can not add condition: {$type}"));
+            throw $exception;
+        }
+    }
+
+    /**
+>>>>>>> 86b9222525c862e3ab299f3f137030666df5eb32
      * Fill single condition.
      *
      * @param array $rules
      * @param ElementInterface $element
      * @return void
      * @throws \Exception
+<<<<<<< HEAD
+=======
+     *
+     * @SuppressWarnings(PHPMD.CyclomaticComplexity)
+     * @SuppressWarnings(PHPMD.NPathComplexity)
+>>>>>>> 86b9222525c862e3ab299f3f137030666df5eb32
      */
     protected function fillCondition(array $rules, ElementInterface $element)
     {
@@ -331,6 +451,7 @@ class ConditionsElement extends SimpleElement
                     if ($openParamLink->isVisible()) {
                         $openParamLink->click();
                     }
+<<<<<<< HEAD
                     if (preg_match('`%(.*?)%`', $rule, $chooserGrid)) {
                         $chooserConfig = explode('#', $chooserGrid[1]);
                         $param->find($this->chooserLocator)->click();
@@ -367,6 +488,18 @@ class ConditionsElement extends SimpleElement
                         }
                         $isSet = true;
                         continue;
+=======
+                    $this->waitUntil(function () use ($param) {
+                        return $param->find($this->ruleParamInput)->isVisible() ? true : null;
+                    });
+
+                    if ($this->fillGrid($rule, $param)) {
+                        $isSet = true;
+                    } elseif ($this->fillSelect($rule, $param)) {
+                        $isSet = true;
+                    } elseif ($this->fillText($rule, $param)) {
+                        $isSet = true;
+>>>>>>> 86b9222525c862e3ab299f3f137030666df5eb32
                     }
                 } catch (\PHPUnit_Extensions_Selenium2TestCase_WebDriverException $e) {
                     $isSet = false;
@@ -384,6 +517,83 @@ class ConditionsElement extends SimpleElement
     }
 
     /**
+<<<<<<< HEAD
+=======
+     * Fill grid element.
+     *
+     * @param string $rule
+     * @param ElementInterface $param
+     * @return bool
+     */
+    protected function fillGrid($rule, ElementInterface $param)
+    {
+        if (preg_match('`%(.*?)%`', $rule, $chooserGrid)) {
+            $chooserConfig = explode('#', $chooserGrid[1]);
+            $rule = preg_replace('`%(.*?)%`', '', $rule);
+
+            $param->find($this->chooserLocator)->click();
+            $grid = ObjectManager::getInstance()->create(
+                str_replace('/', '\\', $chooserConfig[0]),
+                [
+                    'element' => $this->find($this->chooserGridLocator)
+                ]
+            );
+            $grid->searchAndSelect([$chooserConfig[1] => $rule]);
+
+            $apply = $param->find($this->applyRuleParam, Locator::SELECTOR_XPATH);
+            if ($apply->isVisible()) {
+                $apply->click();
+            }
+
+            return true;
+        }
+        return false;
+    }
+
+    /**
+     * Fill select element.
+     *
+     * @param string $rule
+     * @param ElementInterface $param
+     * @return bool
+     */
+    protected function fillSelect($rule, ElementInterface $param)
+    {
+        $value = $param->find('select', Locator::SELECTOR_TAG_NAME, 'select');
+        if ($value->isVisible()) {
+            $value->setValue($rule);
+            $this->click();
+
+            return true;
+        }
+        return false;
+    }
+
+    /**
+     * Fill text element.
+     *
+     * @param string $rule
+     * @param ElementInterface $param
+     * @return bool
+     */
+    protected function fillText($rule, ElementInterface $param)
+    {
+        $value = $param->find('input', Locator::SELECTOR_TAG_NAME);
+        if ($value->isVisible()) {
+            $value->setValue($rule);
+
+            $apply = $param->find('.//*[@class="rule-param-apply"]', Locator::SELECTOR_XPATH);
+            if ($apply->isVisible()) {
+                $apply->click();
+            }
+
+            return true;
+        }
+        return false;
+    }
+
+    /**
+>>>>>>> 86b9222525c862e3ab299f3f137030666df5eb32
      * Decode value.
      *
      * @param string $value
@@ -463,6 +673,7 @@ class ConditionsElement extends SimpleElement
     /**
      * Param wait loader.
      *
+<<<<<<< HEAD
      * @return void
      */
     protected function waitForCondition()
@@ -475,6 +686,15 @@ class ConditionsElement extends SimpleElement
                     return null;
                 }
                 return true;
+=======
+     * @param ElementInterface $element
+     */
+    protected function waitForCondition(ElementInterface $element)
+    {
+        $this->waitUntil(
+            function () use ($element) {
+                return $element->getAttribute('class') == 'rule-param-wait' ? null : true;
+>>>>>>> 86b9222525c862e3ab299f3f137030666df5eb32
             }
         );
     }
@@ -494,6 +714,7 @@ class ConditionsElement extends SimpleElement
     }
 
     /**
+<<<<<<< HEAD
      * Get backend abstract block.
      *
      * @return Template
@@ -507,6 +728,8 @@ class ConditionsElement extends SimpleElement
     }
 
     /**
+=======
+>>>>>>> 86b9222525c862e3ab299f3f137030666df5eb32
      * Get value from conditions.
      *
      * @return null

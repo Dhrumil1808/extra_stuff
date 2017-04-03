@@ -1,5 +1,6 @@
 <?php
 /**
+<<<<<<< HEAD
  * Magento
  *
  * NOTICE OF LICENSE
@@ -22,6 +23,10 @@
  * @package     Tests_Functional
  * @copyright  Copyright (c) 2006-2016 X.commerce, Inc. and affiliates (http://www.magento.com)
  * @license    http://opensource.org/licenses/osl-3.0.php  Open Software License (OSL 3.0)
+=======
+ * Copyright © 2016 Magento. All rights reserved.
+ * See COPYING.txt for license details.
+>>>>>>> 86b9222525c862e3ab299f3f137030666df5eb32
  */
 
 namespace Magento\Mtf\Client\Element;
@@ -30,94 +35,158 @@ use Magento\Mtf\Client\Locator;
 use Magento\Mtf\Client\ElementInterface;
 
 /**
+<<<<<<< HEAD
  * Typified element class for multiselect with group.
+=======
+ * Class MultiselectgrouplistElement
+ * Typified element class for multiselect with group
+>>>>>>> 86b9222525c862e3ab299f3f137030666df5eb32
  */
 class MultiselectgrouplistElement extends MultiselectElement
 {
     /**
+<<<<<<< HEAD
      * Indent length.
+=======
+     * Indent length
+>>>>>>> 86b9222525c862e3ab299f3f137030666df5eb32
      */
     const INDENT_LENGTH = 4;
 
     /**
+<<<<<<< HEAD
      * Locator for search optgroup by label.
+=======
+     * Locator for search optgroup by label
+>>>>>>> 86b9222525c862e3ab299f3f137030666df5eb32
      *
      * @var string
      */
     protected $optgroupByLabel = './/optgroup[@label="%s"]';
 
     /**
+<<<<<<< HEAD
      * Locator for search optgroup by number.
+=======
+     * Locator for search optgroup by number
+>>>>>>> 86b9222525c862e3ab299f3f137030666df5eb32
      *
      * @var string
      */
     protected $optgroupByNumber = './/optgroup[%d]';
 
     /**
+<<<<<<< HEAD
      * Locator for search next optgroup.
+=======
+     * Locator for search next optgroup
+>>>>>>> 86b9222525c862e3ab299f3f137030666df5eb32
      *
      * @var string
      */
     protected $nextOptgroup = './/following-sibling::optgroup[%d]';
 
     /**
+<<<<<<< HEAD
      * Locator for search child optgroup.
+=======
+     * Locator for search child optgroup
+>>>>>>> 86b9222525c862e3ab299f3f137030666df5eb32
      *
      * @var string
      */
     protected $childOptgroup = ".//following-sibling::optgroup[%d][@label='%s']";
 
     /**
+<<<<<<< HEAD
      * Locator for search parent optgroup.
+=======
+     * Locator for search parent optgroup
+>>>>>>> 86b9222525c862e3ab299f3f137030666df5eb32
      *
      * @var string
      */
     protected $parentOptgroup = 'optgroup[option[text()="%s"]]';
 
     /**
+<<<<<<< HEAD
      * Locator for search preceding sibling optgroup.
+=======
+     * Locator for search preceding sibling optgroup
+>>>>>>> 86b9222525c862e3ab299f3f137030666df5eb32
      *
      * @var string
      */
     protected $precedingOptgroup = '/preceding-sibling::optgroup[1][substring(@label,1,%d)="%s"]';
 
     /**
+<<<<<<< HEAD
      * Locator for option.
+=======
+     * Locator for option
+>>>>>>> 86b9222525c862e3ab299f3f137030666df5eb32
      *
      * @var string
      */
     protected $option = './/option[text()="%s"]';
 
     /**
+<<<<<<< HEAD
      * Locator search for option by number.
+=======
+     * Locator search for option by number
+>>>>>>> 86b9222525c862e3ab299f3f137030666df5eb32
      *
      * @var string
      */
     protected $childOptionByNumber = './/optgroup[%d]/option[%d]';
 
     /**
+<<<<<<< HEAD
      * Locator for search parent option.
+=======
+     * Locator search for option by data-text attribute
+     *
+     * @var string
+     */
+    protected $uiOptionText = './/option[@data-title="%s"]';
+
+    /**
+     * Locator for search parent option
+>>>>>>> 86b9222525c862e3ab299f3f137030666df5eb32
      *
      * @var string
      */
     protected $optionByNumber = './option[%d]';
 
     /**
+<<<<<<< HEAD
      * Indent, four symbols non breaking space.
+=======
+     * Indent, four symbols non breaking space
+>>>>>>> 86b9222525c862e3ab299f3f137030666df5eb32
      *
      * @var string
      */
     protected $indent = "\xC2\xA0\xC2\xA0\xC2\xA0\xC2\xA0";
 
     /**
+<<<<<<< HEAD
      * Trim symbols.
+=======
+     * Trim symbols
+>>>>>>> 86b9222525c862e3ab299f3f137030666df5eb32
      *
      * @var string
      */
     protected $trim = "\xC2\xA0 ";
 
     /**
+<<<<<<< HEAD
      * Set values.
+=======
+     * Set values
+>>>>>>> 86b9222525c862e3ab299f3f137030666df5eb32
      *
      * @param array|string $values
      * @return void
@@ -132,7 +201,11 @@ class MultiselectgrouplistElement extends MultiselectElement
     }
 
     /**
+<<<<<<< HEAD
      * Select option.
+=======
+     * Select option
+>>>>>>> 86b9222525c862e3ab299f3f137030666df5eb32
      *
      * @param string $option
      * @return void
@@ -140,6 +213,17 @@ class MultiselectgrouplistElement extends MultiselectElement
      */
     protected function selectOption($option)
     {
+<<<<<<< HEAD
+=======
+        $optionElement = $this->find(sprintf($this->uiOptionText, $option), Locator::SELECTOR_XPATH);
+        if ($optionElement->isVisible()) {
+            if (!$optionElement->isSelected()) {
+                $optionElement->click();
+            }
+            return;
+        }
+
+>>>>>>> 86b9222525c862e3ab299f3f137030666df5eb32
         $isOptgroup = false;
         $optgroupIndent = '';
         $values = explode('/', $option);
@@ -168,7 +252,11 @@ class MultiselectgrouplistElement extends MultiselectElement
     }
 
     /**
+<<<<<<< HEAD
      * Get optgroup.
+=======
+     * Get optgroup
+>>>>>>> 86b9222525c862e3ab299f3f137030666df5eb32
      *
      * @param string $value
      * @param ElementInterface $context
@@ -186,7 +274,11 @@ class MultiselectgrouplistElement extends MultiselectElement
     }
 
     /**
+<<<<<<< HEAD
      * Get child optgroup.
+=======
+     * Get child optgroup
+>>>>>>> 86b9222525c862e3ab299f3f137030666df5eb32
      *
      * @param string $value
      * @param ElementInterface $context
@@ -217,7 +309,11 @@ class MultiselectgrouplistElement extends MultiselectElement
     }
 
     /**
+<<<<<<< HEAD
      * Get value.
+=======
+     * Get value
+>>>>>>> 86b9222525c862e3ab299f3f137030666df5eb32
      *
      * @return array
      * @SuppressWarnings(PHPMD.NPathComplexity)
@@ -272,7 +368,11 @@ class MultiselectgrouplistElement extends MultiselectElement
     }
 
     /**
+<<<<<<< HEAD
      * Get options.
+=======
+     * Get options
+>>>>>>> 86b9222525c862e3ab299f3f137030666df5eb32
      *
      * @return ElementInterface[]
      */
@@ -313,7 +413,11 @@ class MultiselectgrouplistElement extends MultiselectElement
     }
 
     /**
+<<<<<<< HEAD
      * Get selected options.
+=======
+     * Get selected options
+>>>>>>> 86b9222525c862e3ab299f3f137030666df5eb32
      *
      * @return array
      */

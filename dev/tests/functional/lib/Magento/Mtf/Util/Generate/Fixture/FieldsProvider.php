@@ -1,5 +1,6 @@
 <?php
 /**
+<<<<<<< HEAD
  * Magento
  *
  * NOTICE OF LICENSE
@@ -22,10 +23,15 @@
  * @package     Tests_Functional
  * @copyright  Copyright (c) 2006-2016 X.commerce, Inc. and affiliates (http://www.magento.com)
  * @license    http://opensource.org/licenses/osl-3.0.php  Open Software License (OSL 3.0)
+=======
+ * Copyright © 2016 Magento. All rights reserved.
+ * See COPYING.txt for license details.
+>>>>>>> 86b9222525c862e3ab299f3f137030666df5eb32
  */
 
 namespace Magento\Mtf\Util\Generate\Fixture;
 
+<<<<<<< HEAD
 /**
  * Fixture fields provider.
  */
@@ -37,6 +43,63 @@ class FieldsProvider implements FieldsProviderInterface
     public function __construct()
     {
         $this->initMage();
+=======
+use Magento\Framework\App\ResourceConnection;
+use Magento\Framework\ObjectManagerInterface;
+use Magento\Eav\Model\Config;
+use Magento\Framework\DB\Adapter\AdapterInterface;
+
+/**
+ * Provider of fields from database.
+ */
+class FieldsProvider
+{
+    /**
+     * EAV configuration.
+     *
+     * @var Config
+     */
+    protected $eavConfig;
+
+    /**
+     * Resources and connections registry and factory.
+     *
+     * @var Resource
+     */
+    protected $resource;
+
+    /**
+     * Magento connection.
+     *
+     * @var AdapterInterface
+     */
+    protected $connection;
+
+    /**
+     * @constructor
+     * @param ObjectManagerInterface $objectManager
+     */
+    public function __construct(ObjectManagerInterface $objectManager)
+    {
+        $this->eavConfig = $objectManager->create('Magento\Eav\Model\Config');
+        $this->resource = $objectManager->create('Magento\Framework\App\ResourceConnection');
+    }
+
+    /**
+     * Check connection to DB.
+     *
+     * @return bool
+     */
+    public function checkConnection()
+    {
+        $this->connection = $this->getConnection('core');
+        if (!$this->connection || $this->connection instanceof \Zend_Db_Adapter_Exception) {
+            echo ('Connection to Magento 2 database is absent. Fixture data has not been fetched.' . PHP_EOL);
+            return false;
+        }
+
+        return true;
+>>>>>>> 86b9222525c862e3ab299f3f137030666df5eb32
     }
 
     /**
@@ -63,8 +126,13 @@ class FieldsProvider implements FieldsProviderInterface
      */
     protected function eavCollectFields(array $fixture)
     {
+<<<<<<< HEAD
         $entity = $fixture['entity_type'];
         $collection = \Mage::getSingleton('eav/config')->getEntityType($entity)->getAttributeCollection();
+=======
+        $entityType = $fixture['entity_type'];
+        $collection = $this->eavConfig->getEntityType($entityType)->getAttributeCollection();
+>>>>>>> 86b9222525c862e3ab299f3f137030666df5eb32
         $attributes = [];
         foreach ($collection as $attribute) {
             if (isset($fixture['product_type'])) {
@@ -73,16 +141,27 @@ class FieldsProvider implements FieldsProviderInterface
                     continue;
                 }
             }
+<<<<<<< HEAD
 
             /** @var \Mage_Eav_Model_Attribute $attribute */
             $code = $attribute->getAttributeCode();
             $attributes[$code] = array(
+=======
+            /** @var $attribute \Magento\Eav\Model\Entity\Attribute */
+            $code = $attribute->getAttributeCode();
+            $attributes[$code] = [
+>>>>>>> 86b9222525c862e3ab299f3f137030666df5eb32
                 'attribute_code' => $code,
                 'backend_type' => $attribute->getBackendType(),
                 'is_required' => $attribute->getIsRequired(),
                 'default_value' => $attribute->getDefaultValue(),
+<<<<<<< HEAD
                 'input' => $attribute->getFrontendInput()
             );
+=======
+                'input' => $attribute->getFrontendInput(),
+            ];
+>>>>>>> 86b9222525c862e3ab299f3f137030666df5eb32
         }
 
         return $attributes;
@@ -108,17 +187,32 @@ class FieldsProvider implements FieldsProviderInterface
     protected function flatCollectFields(array $fixture)
     {
         $entityType = $fixture['entity_type'];
+<<<<<<< HEAD
         $fields = $this->getConnection()->describeTable($this->retrieveTableName($entityType));
 
         $attributes = [];
         foreach ($fields as $code => $field) {
             $attributes[$code] = array(
+=======
+
+        /** @var $connection \Magento\Framework\DB\Adapter\AdapterInterface */
+        $fields = $this->connection->describeTable($entityType);
+
+        $attributes = [];
+        foreach ($fields as $code => $field) {
+            $attributes[$code] = [
+>>>>>>> 86b9222525c862e3ab299f3f137030666df5eb32
                 'attribute_code' => $code,
                 'backend_type' => $field['DATA_TYPE'],
                 'is_required' => ($field['PRIMARY'] || $field['IDENTITY']),
                 'default_value' => $field['DEFAULT'],
+<<<<<<< HEAD
                 'input' => ''
             );
+=======
+                'input' => '',
+            ];
+>>>>>>> 86b9222525c862e3ab299f3f137030666df5eb32
         }
 
         return $attributes;
@@ -134,10 +228,16 @@ class FieldsProvider implements FieldsProviderInterface
     {
         $entityTypes = $fixture['entities'];
 
+<<<<<<< HEAD
         $connection = $this->getConnection();
         $fields = [];
         foreach ($entityTypes as $entityType) {
             $fields = array_merge($fields, $connection->describeTable($this->retrieveTableName($entityType)));
+=======
+        $fields = [];
+        foreach ($entityTypes as $entityType) {
+            $fields = array_merge($fields, $this->connection->describeTable($entityType));
+>>>>>>> 86b9222525c862e3ab299f3f137030666df5eb32
         }
 
         $attributes = [];
@@ -147,7 +247,11 @@ class FieldsProvider implements FieldsProviderInterface
                 'backend_type' => $field['DATA_TYPE'],
                 'is_required' => ($field['PRIMARY'] || $field['IDENTITY']),
                 'default_value' => $field['DEFAULT'],
+<<<<<<< HEAD
                 'input' => ''
+=======
+                'input' => '',
+>>>>>>> 86b9222525c862e3ab299f3f137030666df5eb32
             ];
         }
 
@@ -155,6 +259,7 @@ class FieldsProvider implements FieldsProviderInterface
     }
 
     /**
+<<<<<<< HEAD
      * Mage init.
      *
      * @return void
@@ -194,5 +299,21 @@ class FieldsProvider implements FieldsProviderInterface
     public function checkConnection()
     {
         return $this->getConnection();
+=======
+     * Retrieve connection to resource specified by $resourceName.
+     *
+     * @param string $resourceName
+     * @return \Exception|false|\Magento\Framework\DB\Adapter\AdapterInterface|\Zend_Exception
+     */
+    protected function getConnection($resourceName)
+    {
+        try {
+            $connection = $this->resource->getConnection($resourceName);
+            return $connection;
+        } catch (\Zend_Exception $e) {
+            echo $e->getMessage() . PHP_EOL;
+            return $e;
+        }
+>>>>>>> 86b9222525c862e3ab299f3f137030666df5eb32
     }
 }

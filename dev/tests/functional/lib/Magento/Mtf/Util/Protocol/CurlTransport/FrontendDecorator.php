@@ -1,5 +1,6 @@
 <?php
 /**
+<<<<<<< HEAD
  * Magento
  *
  * NOTICE OF LICENSE
@@ -22,11 +23,19 @@
  * @package     Tests_Functional
  * @copyright  Copyright (c) 2006-2016 X.commerce, Inc. and affiliates (http://www.magento.com)
  * @license    http://opensource.org/licenses/osl-3.0.php  Open Software License (OSL 3.0)
+=======
+ * Copyright © 2016 Magento. All rights reserved.
+ * See COPYING.txt for license details.
+>>>>>>> 86b9222525c862e3ab299f3f137030666df5eb32
  */
 
 namespace Magento\Mtf\Util\Protocol\CurlTransport;
 
+<<<<<<< HEAD
 use Mage\Customer\Test\Fixture\Customer;
+=======
+use Magento\Customer\Test\Fixture\Customer;
+>>>>>>> 86b9222525c862e3ab299f3f137030666df5eb32
 use Magento\Mtf\Util\Protocol\CurlInterface;
 use Magento\Mtf\Util\Protocol\CurlTransport;
 
@@ -84,7 +93,11 @@ class FrontendDecorator implements CurlInterface
     protected function authorize(Customer $customer)
     {
         $url = $_ENV['app_frontend_url'] . 'customer/account/login/';
+<<<<<<< HEAD
         $this->transport->write(CurlInterface::POST, $url);
+=======
+        $this->transport->write($url);
+>>>>>>> 86b9222525c862e3ab299f3f137030666df5eb32
         $this->read();
         $url = $_ENV['app_frontend_url'] . 'customer/account/loginPost/';
         $data = [
@@ -92,7 +105,11 @@ class FrontendDecorator implements CurlInterface
             'login[password]' => $customer->getPassword(),
             'form_key' => $this->formKey,
         ];
+<<<<<<< HEAD
         $this->transport->write(CurlInterface::POST, $url, '1.1', ['Set-Cookie:' . $this->cookies], $data);
+=======
+        $this->transport->write($url, $data, CurlInterface::POST, ['Set-Cookie:' . $this->cookies]);
+>>>>>>> 86b9222525c862e3ab299f3f137030666df5eb32
         $response = $this->read();
         if (strpos($response, 'customer/account/login')) {
             throw new \Exception($customer->getFirstname() . ', cannot be logged in by curl handler!');
@@ -129,6 +146,7 @@ class FrontendDecorator implements CurlInterface
     /**
      * Send request to the remote server.
      *
+<<<<<<< HEAD
      * @param string $method
      * @param string $url
      * @param string $httpVer
@@ -139,6 +157,21 @@ class FrontendDecorator implements CurlInterface
     public function write($method, $url, $httpVer = '1.1', $headers = [], $params = [])
     {
         $this->transport->write($method, $url, $httpVer, ['Set-Cookie:' . $this->cookies], http_build_query($params));
+=======
+     * @param string $url
+     * @param mixed $params
+     * @param string $method
+     * @param mixed $headers
+     * @return void
+     */
+    public function write($url, $params = [], $method = CurlInterface::POST, $headers = [])
+    {
+        if ($this->formKey) {
+            $params['form_key'] = $this->formKey;
+        }
+        $headers = ['Set-Cookie:' . $this->cookies];
+        $this->transport->write($url, http_build_query($params), $method, $headers);
+>>>>>>> 86b9222525c862e3ab299f3f137030666df5eb32
     }
 
     /**

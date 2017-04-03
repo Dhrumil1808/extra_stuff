@@ -1,5 +1,6 @@
 <?php
 /**
+<<<<<<< HEAD
  * Magento
  *
  * NOTICE OF LICENSE
@@ -22,6 +23,10 @@
  * @package     Tests_Functional
  * @copyright  Copyright (c) 2006-2016 X.commerce, Inc. and affiliates (http://www.magento.com)
  * @license    http://opensource.org/licenses/osl-3.0.php  Open Software License (OSL 3.0)
+=======
+ * Copyright © 2016 Magento. All rights reserved.
+ * See COPYING.txt for license details.
+>>>>>>> 86b9222525c862e3ab299f3f137030666df5eb32
  */
 
 namespace Magento\Mtf\TestSuite;
@@ -30,39 +35,61 @@ use Magento\Mtf\ObjectManager;
 use Magento\Mtf\ObjectManagerFactory;
 
 /**
+<<<<<<< HEAD
  * Injectable tests class.
+=======
+ * Class InjectableTests
+ *
+>>>>>>> 86b9222525c862e3ab299f3f137030666df5eb32
  */
 class InjectableTests extends \PHPUnit_Framework_TestSuite
 {
     /**
+<<<<<<< HEAD
      * Object manager.
      *
+=======
+>>>>>>> 86b9222525c862e3ab299f3f137030666df5eb32
      * @var ObjectManager
      */
     protected $objectManager;
 
     /**
+<<<<<<< HEAD
      * Test suite.
      *
+=======
+>>>>>>> 86b9222525c862e3ab299f3f137030666df5eb32
      * @var \PHPUnit_Framework_TestSuite
      */
     protected $suite;
 
     /**
+<<<<<<< HEAD
      * Test result
      *
+=======
+>>>>>>> 86b9222525c862e3ab299f3f137030666df5eb32
      * @var \PHPUnit_Framework_TestResult
      */
     protected $result;
 
     /**
+<<<<<<< HEAD
      * Run collected tests.
+=======
+     * Run collected tests
+>>>>>>> 86b9222525c862e3ab299f3f137030666df5eb32
      *
      * @param \PHPUnit_Framework_TestResult $result
      * @param bool $filter
      * @param array $groups
      * @param array $excludeGroups
      * @param bool $processIsolation
+<<<<<<< HEAD
+=======
+     *
+>>>>>>> 86b9222525c862e3ab299f3f137030666df5eb32
      * @return \PHPUnit_Framework_TestResult|void
      *
      * @SuppressWarnings(PHPMD.UnusedFormalParameter)
@@ -80,7 +107,11 @@ class InjectableTests extends \PHPUnit_Framework_TestSuite
     }
 
     /**
+<<<<<<< HEAD
      * Prepare test suite.
+=======
+     * Prepare test suite
+>>>>>>> 86b9222525c862e3ab299f3f137030666df5eb32
      *
      * @return mixed
      */
@@ -91,9 +122,15 @@ class InjectableTests extends \PHPUnit_Framework_TestSuite
     }
 
     /**
+<<<<<<< HEAD
      * Prepare test suite and apply application state.
      *
      * @return AppState
+=======
+     * Prepare test suite and apply application state
+     *
+     * @return \Magento\Mtf\TestSuite\AppState
+>>>>>>> 86b9222525c862e3ab299f3f137030666df5eb32
      */
     public function prepareSuite()
     {
@@ -102,9 +139,13 @@ class InjectableTests extends \PHPUnit_Framework_TestSuite
     }
 
     /**
+<<<<<<< HEAD
      * Call the initialization of ObjectManager.
      *
      * @return void
+=======
+     * Call the initialization of ObjectManager
+>>>>>>> 86b9222525c862e3ab299f3f137030666df5eb32
      */
     public function init()
     {
@@ -112,9 +153,13 @@ class InjectableTests extends \PHPUnit_Framework_TestSuite
     }
 
     /**
+<<<<<<< HEAD
      * Initialize ObjectManager.
      *
      * @return void
+=======
+     * Initialize ObjectManager
+>>>>>>> 86b9222525c862e3ab299f3f137030666df5eb32
      */
     private function initObjectManager()
     {

@@ -1,5 +1,6 @@
 <?php
 /**
+<<<<<<< HEAD
  * Magento
  *
  * NOTICE OF LICENSE
@@ -22,18 +23,31 @@
  * @package     Tests_Functional
  * @copyright  Copyright (c) 2006-2016 X.commerce, Inc. and affiliates (http://www.magento.com)
  * @license    http://opensource.org/licenses/osl-3.0.php  Open Software License (OSL 3.0)
+=======
+ * Copyright © 2016 Magento. All rights reserved.
+ * See COPYING.txt for license details.
+>>>>>>> 86b9222525c862e3ab299f3f137030666df5eb32
  */
 
 namespace Magento\Mtf\Client\Element;
 
+<<<<<<< HEAD
 use Magento\Mtf\Client\Locator;
 use Magento\Mtf\Client\Element\SimpleElement as Element;
 use Magento\Mtf\Client\ElementInterface;
+=======
+use Magento\Mtf\Client\ElementInterface;
+use Magento\Mtf\Client\Locator;
+>>>>>>> 86b9222525c862e3ab299f3f137030666df5eb32
 
 /**
  * Typified element class for Tree elements.
  */
+<<<<<<< HEAD
 class TreeElement extends Element
+=======
+class TreeElement extends Tree
+>>>>>>> 86b9222525c862e3ab299f3f137030666df5eb32
 {
     /**
      * All selected checkboxes.
@@ -43,6 +57,7 @@ class TreeElement extends Element
     protected $selectedCheckboxes = '//input[@checked=""]';
 
     /**
+<<<<<<< HEAD
      * Selected checkboxes.
      *
      * @var string
@@ -83,6 +98,48 @@ class TreeElement extends Element
      * @var string
      */
     protected $parentElement = './../../../../../div/a/span';
+=======
+     * Selector for plus image.
+     *
+     * @var string
+     */
+    protected $imagePlus = './div/img[contains(@class, "-plus")]';
+
+    /**
+     * Selector for input.
+     *
+     * @var string
+     */
+    protected $input = '/div/a/span';
+
+    /**
+     * Selector for parent element.
+     *
+     * @var string
+     */
+    protected $parentElement = './../../../../../div/a/span';
+
+    /**
+     * Selected checkboxes.
+     *
+     * @var string
+     */
+    protected $selectedLabels = '//input[@checked=""]/../a/span';
+
+    /**
+     * Pattern for child element node.
+     *
+     * @var string
+     */
+    protected $pattern = '//li[@class="x-tree-node" and div/a/span[contains(text(),"%s")]]';
+
+    /**
+     *  Regular pattern mask for node label.
+     *
+     * @var string
+     */
+    protected $regPatternLabel = '`(.+) \(.*`';
+>>>>>>> 86b9222525c862e3ab299f3f137030666df5eb32
 
     /**
      * Clear data for element.
@@ -98,6 +155,7 @@ class TreeElement extends Element
     }
 
     /**
+<<<<<<< HEAD
      * Get the value.
      *
      * @return array
@@ -197,6 +255,11 @@ class TreeElement extends Element
      * Display children.
      *
      * @param $element
+=======
+     * Display children.
+     *
+     * @param string $element
+>>>>>>> 86b9222525c862e3ab299f3f137030666df5eb32
      * @return void
      */
     protected function displayChildren($element)
@@ -210,6 +273,7 @@ class TreeElement extends Element
     }
 
     /**
+<<<<<<< HEAD
      * Waiter for load children.
      *
      * @param ElementInterface $element
@@ -253,4 +317,18 @@ class TreeElement extends Element
         throw new \BadMethodCallException('Not applicable for this class of elements (TreeElement)');
     }
 
+=======
+     * Get element label.
+     *
+     * @param ElementInterface $element
+     * @return string
+     */
+    protected function getElementLabel(ElementInterface $element)
+    {
+        $value = $element->getText();
+        preg_match($this->regPatternLabel, $value, $matches);
+
+        return trim($matches[1]);
+    }
+>>>>>>> 86b9222525c862e3ab299f3f137030666df5eb32
 }
